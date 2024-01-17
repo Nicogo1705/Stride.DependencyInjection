@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Stride.DepInjection
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-    internal class InjectAttribute : Attribute
+    public class InjectAttribute : Attribute
     {
         public InjectionType InjectionType { get; }
 
