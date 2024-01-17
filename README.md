@@ -15,6 +15,11 @@ To use Stride.DependencyInjection, First register your types, then simply add th
 NOTE : property must have Get & set and being public.
 The library will handle the rest.
 
+## Alternative
+
+Just found this : https://github.com/manio143/Stride.DependencyInjection/tree/master
+can be an alternative/a source of idea for this repository.
+
 ## Contributing
 
 Contributions are welcome! I just started it as a template/idea.
