@@ -13,7 +13,7 @@ namespace Stride.DepInjection
     public static class InjectionServicesHelper
     {
 
-        public static void ValidateAndGetServices(IServiceRegistry services, out InjectionService injectionService, out InjectionProcessor injectionProcessor, Action<InjectionService>? configure = null)
+        public static void SetGetAndConfigureServices(IServiceRegistry services, out InjectionService injectionService, out InjectionProcessor injectionProcessor, Action<InjectionService>? configure = null)
         {
             injectionService = services.GetService<InjectionService>();
             if (injectionService == null)
@@ -30,11 +30,6 @@ namespace Stride.DepInjection
                 injectionProcessor = new InjectionProcessor();
                 sceneSystem.SceneInstance.Processors.Add(injectionProcessor);
             }
-        }
-
-        public static void ValidateAndGetServices(IServiceRegistry services, out object injectionService, out InjectionProcessor _)
-        {
-            throw new NotImplementedException();
         }
     }
 }

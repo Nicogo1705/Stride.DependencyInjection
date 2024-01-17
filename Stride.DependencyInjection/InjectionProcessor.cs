@@ -15,7 +15,7 @@ namespace Stride.DepInjection
 
         protected override void OnSystemAdd()
         {
-            InjectionServicesHelper.ValidateAndGetServices(Services, out _injectionService, out _);
+            InjectionServicesHelper.SetGetAndConfigureServices(Services, out _injectionService, out _, e => e.Register(e.GetType(), e));
             base.OnSystemAdd();
         }
 

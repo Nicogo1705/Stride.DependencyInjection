@@ -11,7 +11,7 @@ namespace Stride.DepInjection.Demo
 
         public override void Start()
         {
-            InjectionServicesHelper.ValidateAndGetServices(Services, out _, out _, (e) =>
+            InjectionServicesHelper.SetGetAndConfigureServices(Services, out _, out _, (e) =>
             {
                 e.Register(typeof(int), -1);
                 e.Register(typeof(WeaponDataProvider), new WeaponDataProvider() { ProviderUrl = "127.0.0.2" });
