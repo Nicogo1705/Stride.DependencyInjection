@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "com.nicogo.dependency-injection",
+  "name": "Stride Dependency Injection",
+  "authors": [{ "name": "Nicogo", "url": "https://github.com/Nicogo1705" }],
+  "description": "Lightweight dependency injection for Stride ScriptComponents: register your types, mark public get/set properties with [Inject], and the library wires them up automatically.",
+  "category": "Scripts",
+  "tags": ["dependency-injection", "di", "ioc", "scripts", "components"],
+  "license": "MIT",
+  "thumbnail": "thumbnail.png",
+  "media": [],
+  "dependencies": [],
+  "defaultImport": "local"
+}
