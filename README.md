@@ -27,3 +27,5 @@ Contributions are welcome! I just started it as a template/idea.
 ## License
 
 This project is licensed under the terms of the MIT license.
+
+> Published on the Stride Asset Store. Tag **v1.0.0** is the certified release; `master` is the rolling latest.
