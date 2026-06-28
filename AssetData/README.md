@@ -1,29 +1,55 @@
-# Stride.DependencyInjection
+# Stride Dependency Injection
 
-## Overview
+Lightweight dependency injection for [Stride](https://stride3d.net) scripts. Register your types
+once, mark public `get`/`set` properties with `[Inject]`, and the library fills them in for you —
+no service-locator boilerplate in every script.
 
-Stride.DependencyInjection is a lightweight library that allows for dependency injection in ScriptComponent classes using a single attribute (Inject).
+## Install
 
-## Features
-
-- **Simplicity**: Inject dependencies into your EntityComponent classes with just one attribute.
-- **Lightweight**: The source code is short and straightforward, making it easy to maintain and extend.
+From the **Stride Asset Store** (clone + `<ProjectReference>`), or reference
+`Stride.DependencyInjection.csproj`.
 
 ## Usage
 
-To use Stride.DependencyInjection, First register your types, then simply add the provided attribute to each property that you want to inject. 
-NOTE : property must have Get & set and being public.
-The library will handle the rest.
+**1 — Register your services once** (e.g. from a `StartupScript` in your scene):
 
-## Alternative
+```csharp
+using Stride.DepInjection;
 
-Just found this : https://github.com/manio143/Stride.DependencyInjection/tree/master
-can be an alternative/a source of idea for this repository.
+public class GameServices : StartupScript
+{
+    public override void Start()
+    {
+        InjectionServicesHelper.SetGetAndConfigureServices(Services, out _, out _, e =>
+        {
+            e.Register(typeof(int), 42);
+            e.Register(typeof(WeaponDataProvider), new WeaponDataProvider { ProviderUrl = "127.0.0.1" });
+        });
+    }
+}
+```
 
-## Contributing
+**2 — Inject into any script** — mark a public `get`/`set` property with `[Inject]`:
 
-Contributions are welcome! I just started it as a template/idea.
+```csharp
+using Stride.DepInjection;
+
+public class Sword : SyncScript
+{
+    [Inject, DataMemberIgnore]
+    public WeaponDataProvider? Weapons { get; set; }
+
+    [Inject, DataMemberIgnore]
+    public int Damage { get; set; }
+
+    public override void Update()
+        => DebugText.Print($"{Damage} dmg via {Weapons?.ProviderUrl}", new(10, 10));
+}
+```
+
+> Injected properties must be **public with both a getter and a setter**. `[DataMemberIgnore]`
+> keeps them out of the Game Studio inspector.
 
 ## License
 
-This project is licensed under the terms of the MIT license.
+MIT.
