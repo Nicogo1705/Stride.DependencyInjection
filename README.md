@@ -4,11 +4,6 @@ Lightweight dependency injection for [Stride](https://stride3d.net) scripts. Reg
 once, mark public `get`/`set` properties with `[Inject]`, and the library fills them in for you —
 no service-locator boilerplate in every script.
 
-## Install
-
-From the **Stride Asset Store** (clone + `<ProjectReference>`), or reference
-`Stride.DependencyInjection.csproj`.
-
 ## Usage
 
 **1 — Register your services once** (e.g. from a `StartupScript` in your scene):
